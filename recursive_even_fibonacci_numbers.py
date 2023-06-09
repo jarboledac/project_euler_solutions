@@ -8,8 +8,8 @@ def fibonnacci_even(n: int) -> int:
     """
     Obtaing the n even element from fibonacci sequence
 
-    Input
-    -----
+    Parameters
+    ----------
         n: int
             n even element
     Return
