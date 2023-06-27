@@ -7,6 +7,17 @@ import numpy as np
 ##232792560 solutio
 
 def smallest_divisible(cant_evaluate: int) -> int:
+    """
+    Finds the smallest number divisible by all numbers from 1 to cant_evaluate.
+
+    Input:
+        cant_evaluate : int 
+            The upper limit for evaluation.
+
+    Returns:
+        int: The smallest number divisible by all numbers from 1 to cant_evaluate.
+
+    """
     num_validate = cant_evaluate
     while True:
         modulo_array = num_validate%np.arange(1,cant_evaluate +1)
