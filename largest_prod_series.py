@@ -1,4 +1,14 @@
 import numpy as np
+import argparse
+
+parser = argparse.ArgumentParser(description='Largest producto of n numbers in a serie')
+parser.add_argument('-s', '--serie', type=str,
+                    choices=['default', 'new'], help='Define value to number serie', default='default')
+
+args = parser.parse_args()
+
+
+
 serie_number = """
 73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
@@ -22,10 +32,24 @@ serie_number = """
 71636269561882670428252483600823257530420752963450
 """.replace('\n','')
 
-products = []
-n_digits = 13
-for val in range(len(serie_number)):
-    if val + n_digits < len(serie_number):
-        num_list = serie_number[val:val+n_digits]
-        products.append(np.product([int(x) for x in num_list]))
-print(max(products))
+
+def max_mult_numbers(n_digits: int, serie_number: str) -> int:
+    products = []
+    for val in range(len(serie_number)):
+        if val + n_digits < len(serie_number):
+            num_list = serie_number[val:val+n_digits]
+            products.append(np.product([int(x) for x in num_list]))
+    return max(products)
+
+
+
+if __name__ == '__main__':
+    n_prod = int(input(f' Input the digit number to multiply : '))
+    if args.serie == 'default':
+        print(max_mult_numbers(n_prod, serie_number))
+    else:
+        serie_num = input(f' Input the string with the numbers to use : ')
+        print(max_mult_numbers(n_prod, serie_num))
+
+
+
